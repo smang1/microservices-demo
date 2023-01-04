@@ -31,3 +31,9 @@ build/
 
 ### VS Code ###
 .vscode/
+
+## project & Env##
+setenv.cmd
+twitter-to-kafka-service-logs
+twitter-to-kafka-service/twitter-to-kafka-service-logs
+twitter-to-kafka-service/target
