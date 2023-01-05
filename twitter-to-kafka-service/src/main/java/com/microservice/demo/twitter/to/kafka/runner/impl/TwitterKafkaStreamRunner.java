@@ -5,7 +5,7 @@ import com.microservice.demo.twitter.to.kafka.listener.TwitterKafkaStatusListene
 import com.microservice.demo.twitter.to.kafka.runner.StreamRunner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.stereotype.Component;
 import twitter4j.FilterQuery;
 import twitter4j.TwitterException;
@@ -16,7 +16,8 @@ import javax.annotation.PreDestroy;
 import java.util.Arrays;
 
 @Component
-@ConditionalOnProperty(name = "twitter-to-kafka-service.enable-v2-tweets", havingValue = "false")
+@ConditionalOnExpression("not ${twitter-to-kafka-service.enable-v2-tweets} && not ${twitter-to-kafka-service.enable-mock-tweets}")
+//@ConditionalOnProperty(name = "twitter-to-kafka-service.enable-v2-tweets", havingValue = "false")
 public class TwitterKafkaStreamRunner implements StreamRunner {
     private static final Logger LOG = LoggerFactory.getLogger(TwitterKafkaStreamRunner.class);
     private final TwitterToKafkaConfigData twitterToKafkaConfigData;

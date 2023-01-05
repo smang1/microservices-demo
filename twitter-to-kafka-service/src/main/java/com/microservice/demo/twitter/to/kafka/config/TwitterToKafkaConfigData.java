@@ -11,7 +11,9 @@ import java.util.List;
 public class TwitterToKafkaConfigData {
     private List<String> twitterKeywords;
     private String welcomeMessage;
-    //private String enableV2Tweets;
+    private Long mockSleepMs;
+    private Integer mockMinTweetLength;
+    private Integer mockMaxTweetLength;
     private String twitterV2BaseUrl;
     private String twitterV2RulesBaseUrl;
     private String twitterV2BearerToken;
