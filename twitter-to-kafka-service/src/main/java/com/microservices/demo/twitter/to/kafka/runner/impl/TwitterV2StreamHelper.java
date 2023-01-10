@@ -1,7 +1,7 @@
-package com.microservice.demo.twitter.to.kafka.runner.impl;
+package com.microservices.demo.twitter.to.kafka.runner.impl;
 
-import com.microservice.demo.twitter.to.kafka.config.TwitterToKafkaConfigData;
-import com.microservice.demo.twitter.to.kafka.listener.TwitterKafkaStatusListener;
+import com.microservices.demo.twitter.to.kafka.listener.TwitterKafkaStatusListener;
+import com.microservices.demo.config.TwitterToKafkaConfigData;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -18,7 +18,6 @@ import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 import twitter4j.Status;
 import twitter4j.TwitterException;
@@ -41,7 +40,7 @@ import java.util.Map;
 @ConditionalOnExpression("${twitter-to-kafka-service.enable-v2-tweets} && not ${twitter-to-kafka-service.enable-mock-tweets}")
 public class TwitterV2StreamHelper {
 
-    private static Logger LOG = LoggerFactory.getLogger(TwitterV2StreamHelper.class);
+    private static final Logger LOG = LoggerFactory.getLogger(TwitterV2StreamHelper.class);
     private final TwitterToKafkaConfigData twitterToKafkaConfigData;
     private final TwitterKafkaStatusListener twitterKafkaStatusListener;
     private static final String tweetAsRawJson = "{" +

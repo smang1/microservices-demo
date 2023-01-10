@@ -1,4 +1,4 @@
-package com.microservice.demo.twitter.to.kafka.listener;
+package com.microservices.demo.twitter.to.kafka.listener;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -34,6 +34,7 @@ build/
 
 ## project & Env##
 setenv.cmd
+setenv.sh
 twitter-to-kafka-service-logs
 twitter-to-kafka-service/twitter-to-kafka-service-logs
 twitter-to-kafka-service/target

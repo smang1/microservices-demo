@@ -1,7 +1,7 @@
-package com.microservice.demo.twitter.to.kafka.runner.impl;
+package com.microservices.demo.twitter.to.kafka.runner.impl;
 
-import com.microservice.demo.twitter.to.kafka.config.TwitterToKafkaConfigData;
-import com.microservice.demo.twitter.to.kafka.runner.StreamRunner;
+import com.microservices.demo.twitter.to.kafka.runner.StreamRunner;
+import com.microservices.demo.config.TwitterToKafkaConfigData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;

@@ -1,10 +1,11 @@
-package com.microservice.demo.twitter.to.kafka;
+package com.microservices.demo.twitter.to.kafka;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.ComponentScan;
 
-import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
+//@ComponentScan(basePackages = "com.microservice.demo")
 public class TwitterToKafkaServiceApplicationTests {
     @Test
     public void contextLoad() {
