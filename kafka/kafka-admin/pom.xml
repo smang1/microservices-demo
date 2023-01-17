@@ -13,6 +13,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>kafka-admin</artifactId>
+  <name>kafka-admin</name>
 
 <dependencies>
   <dependency>
