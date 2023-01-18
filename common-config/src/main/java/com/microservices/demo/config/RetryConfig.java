@@ -1,10 +1,11 @@
 package com.microservices.demo.config;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.retry.backoff.ExponentialBackOffPolicy;
 import org.springframework.retry.policy.SimpleRetryPolicy;
 import org.springframework.retry.support.RetryTemplate;
-
+@Configuration
 public class RetryConfig {
 
     private final RetryConfigData retryConfigData;
