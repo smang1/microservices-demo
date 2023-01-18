@@ -1,7 +1,6 @@
-package com.microservices.demo.twitter.to.kafka;
+package com.microservices.demo.twitter.to.kafka.service;
 
-import java.util.Arrays;
-
+import com.microservices.demo.twitter.to.kafka.service.init.StreamInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -10,19 +9,19 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 import com.microservices.demo.config.TwitterToKafkaConfigData;
-import com.microservices.demo.twitter.to.kafka.runner.StreamRunner;
+import com.microservices.demo.twitter.to.kafka.service.runner.StreamRunner;
 
 @SpringBootApplication
 @ComponentScan(basePackages = "com.microservices.demo")
 public class TwitterToKafkaServiceApplication implements CommandLineRunner {
 
     private static final Logger LOG = LoggerFactory.getLogger(TwitterToKafkaServiceApplication.class);
-    private final TwitterToKafkaConfigData twitterToKafkaConfigData;
     private final StreamRunner streamRunner;
+    private final StreamInitializer streamInitializer;
 
-    public TwitterToKafkaServiceApplication(TwitterToKafkaConfigData configData, StreamRunner streamRunner) {
-        this.twitterToKafkaConfigData = configData;
+    public TwitterToKafkaServiceApplication(TwitterToKafkaConfigData configData, StreamRunner streamRunner, StreamInitializer streamInitializer) {
         this.streamRunner = streamRunner;
+        this.streamInitializer = streamInitializer;
     }
 
     public static void main(String[] args) {
@@ -33,8 +32,7 @@ public class TwitterToKafkaServiceApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         System.out.println("App starts");
-        LOG.info(Arrays.toString(twitterToKafkaConfigData.getTwitterKeywords().toArray()));
-        LOG.info(twitterToKafkaConfigData.getWelcomeMessage());
+        streamInitializer.init();
         streamRunner.start();
     }
 }
