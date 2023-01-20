@@ -1,0 +1,24 @@
+version: '3.7'
+services:
+  twitter-to-kafka-service:
+    image: ${GROUP_ID}/twitter.to.kafka.service:${SERVICE_VERSION:-latest}
+    ports:
+      - "5005:5005"
+    volumes:
+      - "./docker-logs:/workspace/twitter-to-kafka-service/logs"
+    environment:
+      - "JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005 -Xms128m -Xmx256m"
+      - "LOGGING_LEVEL_COM_MICROSERVICES_DEMO=info"
+      - "LOGGING_LEVEL_ROOT=info"
+      - "KAFKA-CONFIG_TOPIC-NAME=twitter-topic"
+      - "KAFKA-CONFIG_BOOTSTRAP-SERVERS=kafka-broker-1:9092, kafka-broker-2:9092, kafka-broker-3:9092"
+      - "KAFKA-CONFIG_SCHEMA-REGISTRY-URL=http://schema-registry:8081"
+      - "TWITTER-TO-KAFKA-SERVICE_ENABLE-V2-TWEETS:false"
+      - "TWITTER-TO-KAFKA-SERVICE_ENABLE-MOCK-TWEETS:true"
+      #- "OAUTH_CONSUMER_KEY=_YOUR_SECERET_HERE_"
+      #- "OAUTH_CONSUMER_SECRET=_YOUR_SECERET_HERE_"
+      #- "OAUTH_CONSUMER_TOKEN=_YOUR_SECERET_HERE_"
+      #- "OAUTH_ACCESS_TOKEN_SECRET=_YOUR_SECERET_HERE_"
+      #- "TWITTER_BEARER_TOKEN=_YOUR_SECERET_HERE_"
+    networks:
+      - ${GLOBAL_NETWORK:-services}
